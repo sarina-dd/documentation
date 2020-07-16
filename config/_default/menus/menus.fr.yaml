@@ -2311,18 +2311,6 @@ api_v1:
     parent: Synthetics
     url: pause-or-start-a-test
     generated: true
-  - name: Create a global variable
-    parent: Synthetics
-    url: create-a-global-variable
-    generated: true
-  - name: Delete a global variable
-    parent: Synthetics
-    url: delete-a-global-variable
-    generated: true
-  - name: Edit a global variable
-    parent: Synthetics
-    url: edit-a-global-variable
-    generated: true
   - name: Tags
     url: /fr/api/v1/tags/
     identifier: Tags
@@ -2578,6 +2566,10 @@ api_v2:
   - name: Logs
     url: /fr/api/v2/logs/
     identifier: Logs
+    generated: true
+  - name: Aggregate events
+    parent: Logs
+    url: aggregate-events
     generated: true
   - name: Get a quick list of logs
     parent: Logs
