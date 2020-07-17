@@ -6694,24 +6694,12 @@ components:
     SyntheticsGlobalVariable:
       description: Synthetics global variable.
       properties:
-        created_at:
-          description: Creation timestamp of the global variable.
-          format: date-time
-          type: string
-        created_by:
-          description: The ID of the user who created the global variable.
-          format: int32
-          maximum: 2147483647
-          type: integer
         description:
           description: Description of the global variable.
           type: string
         id:
           description: Unique identifier of the global variable.
-          type: string
-        modified_at:
-          description: Modification timestamp of the global variable.
-          format: date-time
+          readOnly: true
           type: string
         name:
           description: Name of the global variable.
@@ -6723,16 +6711,27 @@ components:
             type: string
           type: array
         value:
-          description: Value of the global variable.
-          properties:
-            secure:
-              description: Determines if the variable is secure.
-              type: boolean
-            value:
-              description: Value of the global variable.
-              type: string
-          type: object
+          $ref: '#/components/schemas/SyntheticsGlobalVariableValue'
+      required:
+      - description
+      - name
+      - tags
+      - value
       type: object
+    SyntheticsGlobalVariableValue:
+      description: Value of the global variable.
+      example:
+        secure: true
+        value: value
+      properties:
+        secure:
+          description: Determines if the variable is secure.
+          type: boolean
+        value:
+          description: Value of the global variable.
+          type: string
+      required:
+      - value
     SyntheticsListTestsResponse:
       description: Object containing an array of Synthetic tests configuration.
       properties:
@@ -7123,10 +7122,12 @@ components:
       enum:
       - http
       - ssl
+      - tcp
       type: string
       x-enum-varnames:
       - HTTP
       - SSL
+      - TCP
     SyntheticsTestDetailsType:
       description: Type of the Synthetic test, either `api` or `browser`.
       enum:
